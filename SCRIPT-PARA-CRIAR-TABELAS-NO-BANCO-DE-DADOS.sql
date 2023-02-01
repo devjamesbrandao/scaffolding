@@ -1,0 +1,57 @@
+USE [TesteScaffold]
+GO
+/****** Object:  Table [dbo].[BookCategory]    Script Date: 31/01/2023 22:24:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BookCategory](
+	[BookId] [int] NOT NULL,
+	[CategoryId] [int] NOT NULL,
+ CONSTRAINT [PK_BookCategory] PRIMARY KEY CLUSTERED 
+(
+	[BookId] ASC,
+	[CategoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Books]    Script Date: 31/01/2023 22:24:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Books](
+	[BookId] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Books] PRIMARY KEY CLUSTERED 
+(
+	[BookId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categories]    Script Date: 31/01/2023 22:24:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categories](
+	[CategoryId] [int] IDENTITY(1,1) NOT NULL,
+	[CategoryName] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
+(
+	[CategoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[BookCategory]  WITH CHECK ADD  CONSTRAINT [FK_BookCategory_Books_BookId] FOREIGN KEY([BookId])
+REFERENCES [dbo].[Books] ([BookId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[BookCategory] CHECK CONSTRAINT [FK_BookCategory_Books_BookId]
+GO
+ALTER TABLE [dbo].[BookCategory]  WITH CHECK ADD  CONSTRAINT [FK_BookCategory_Categories_CategoryId] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[Categories] ([CategoryId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[BookCategory] CHECK CONSTRAINT [FK_BookCategory_Categories_CategoryId]
+GO
