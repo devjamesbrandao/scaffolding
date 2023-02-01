@@ -30,4 +30,6 @@ o pacote é o Microsoft.EntityFrameworkCore.SqlServer
 > - <strong>--namespace Meu.Namespace --context-namespace Meu.Namespace.Context</strong>: por padrão, o namespace será o namespace raiz mais os nomes de quaisquer subdiretórios no diretório raiz do projeto. No entanto, você pode substituir o namespace para todas as classes de saída usando --namespace. Você também pode substituir o namespace apenas para a classe DbContext usando --context-namespace
 > - <strong>-p</strong>: assembly onde o DbContext está configurado
 
+` 🌐 References`
+<p>Engenharia reversa: https://learn.microsoft.com/pt-br/ef/core/managing-schemas/scaffolding/?tabs=dotnet-core-cli</p>
 
